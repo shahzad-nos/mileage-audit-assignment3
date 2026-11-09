@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vehicle Mileage Audit</title>
+  <style>
+    :root { color-scheme: dark; font-family: system-ui, sans-serif; }
+    body { margin: 0; background: #0b1422; color: #eef5ff; }
+    main { max-width: 760px; margin: auto; padding: 32px 20px; }
+    section {
+      margin: 16px 0;
+      padding: 20px;
+      border: 1px solid #304862;
+      border-radius: 14px;
+      background: #142339;
+    }
+    .badge { color: #7dd3fc; font-size: .8rem; letter-spacing: .12em; }
+    label { display: block; margin-bottom: 12px; }
+    input, button { padding: 9px; border-radius: 7px; font: inherit; }
+    input { max-width: 100%; }
+    button { background: #7dd3fc; color: #0b1422; font-weight: bold; }
+    button:disabled { opacity: .55; }
+    li { margin-bottom: 10px; }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="badge">GANACHE · LOCAL BLOCKCHAIN</p>
+    <h1>Vehicle Mileage Audit</h1>
+    <p>Record mileage from three sources and review discrepancies.</p>
+    <p id="message" role="status">Connecting to Ganache…</p>
+
+    <section>
+      <h2>Vehicle status</h2>
+      <p id="vehicle-status">Waiting for the contract.</p>
+      <button id="refresh" type="button">Refresh records</button>
+    </section>
+
+    <section>
+      <h2>Submit an inspection</h2>
+      <form id="inspection-form">
+        <label>Dashboard (km) <input name="dashboard" type="number" min="0" step="1" required></label>
+        <label>Module A (km) <input name="moduleA" type="number" min="0" step="1" required></label>
+        <label>Module B (km) <input name="moduleB" type="number" min="0" step="1" required></label>
+        <button type="submit">Submit as reporter</button>
+      </form>
+    </section>
+
+    <section>
+      <h2>Resolve a review</h2>
+      <form id="review-form">
+        <label>Accepted mileage (km) <input name="mileage" type="number" min="0" step="1" required></label>
+        <label>Reason <input name="reason" type="text" required></label>
+        <button type="submit">Resolve as reviewer</button>
+      </form>
+    </section>
+
+    <section>
+      <h2>Inspection history</h2>
+      <ul id="history"></ul>
+    </section>
+  </main>
+  <script type="module" src="./script.js"></script>
+</body>
+</html>
